@@ -6,6 +6,11 @@ module.exports = {
     plugins: [...options.plugins, '@babel/plugin-transform-react-jsx']
   }),
   webpackFinal: (config) => {
+    config.resolve.alias["core-js/modules"] =
+      "@storybook/core/node_modules/core-js/modules";
+    config.resolve.alias["core-js/features"] =
+      "@storybook/core/node_modules/core-js/features";
+
     config.resolve.modules.push(`${process.cwd()}/src`)
     return config
   }
